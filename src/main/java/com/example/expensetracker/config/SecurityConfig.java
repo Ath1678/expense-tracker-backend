@@ -29,7 +29,7 @@ public class SecurityConfig {
                 .csrf(csrf -> csrf.disable())
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers("/auth/**").permitAll()
-                        .requestMatchers(HttpMethod.GET, "/api/expenses/**").permitAll()
+                        .requestMatchers(HttpMethod.GET, "/api/expenses", "/api/expenses/**").permitAll()
                         .anyRequest().authenticated()
                 )
                 .sessionManagement(sess ->
