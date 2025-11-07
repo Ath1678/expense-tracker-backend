@@ -26,21 +26,23 @@ public class SecurityConfig {
         http
             .csrf(csrf -> csrf.disable())
             .authorizeHttpRequests(auth -> auth
-                    // allow register/login
-                    .requestMatchers("/auth/**").permitAll()
+                // ✅ allow register/login
+                .requestMatchers("/auth/**").permitAll()
 
-                    // allow GET expenses without JWT
-                    .requestMatchers(HttpMethod.GET, "/api/expenses/**").permitAll()
+                // ✅ allow GET expenses without JWT
+                .requestMatchers(HttpMethod.GET, "/api/expenses/**").permitAll()
 
-                    // TEMPORARY → allow all for testing
-                    .requestMatchers("/api/**").permitAll()
+                // ✅ allow default /error
+                .requestMatchers("/error").permitAll()
 
-                    // everything else requires token
-                    .anyRequest().authenticated()
+                // ✅ everything else needs JWT
+                .anyRequest().authenticated()
             )
-            .sessionManagement(sess ->
+            // ✅ stateless session
+            .sessionManagement(sess -> 
                     sess.sessionCreationPolicy(SessionCreationPolicy.STATELESS)
             )
+            // ✅ add JWT filter
             .addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class);
 
         return http.build();
