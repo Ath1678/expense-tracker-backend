@@ -1,0 +1,16 @@
+README
+
+
+Firstly tap on the folder C:/Projects
+
+go to the project in eclipse and then click src/main/java 
+and then run spring boot the expence tracker appplication
+
+open it in terminal and then
+		cd C:\Projects\expense-frontend
+		npm start
+it will start the frontend
+
+also keep the database on in order to verify that is the data is being added or not
+		USE expense_db;
+		SELECT * FROM expense;

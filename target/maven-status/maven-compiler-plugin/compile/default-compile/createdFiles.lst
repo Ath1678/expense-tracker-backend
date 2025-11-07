@@ -1,0 +1,5 @@
+com\example\expensetracker\service\impl\ExpenseServiceImpl.class
+com\example\expensetracker\controller\ExpenseController.class
+com\example\expensetracker\repository\ExpenseRepository.class
+com\example\expensetracker\model\Expense.class
+com\example\expensetracker\service\ExpenseService.class
