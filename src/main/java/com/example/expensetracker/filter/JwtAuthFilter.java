@@ -1,4 +1,4 @@
-package com.example.expensetracker.config;
+package com.example.expensetracker.filter;
 
 import com.example.expensetracker.repository.UserRepository;
 import com.example.expensetracker.service.JwtService;
