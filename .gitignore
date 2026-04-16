@@ -1,0 +1,18 @@
+# Compiled class files
+/target/
+*.class
+
+# Log files
+/*.log
+
+# Large binaries & ZIPs
+/*.zip
+/apache-maven-*/
+
+# IDE metadata
+.settings/
+.project
+.classpath
+.factorypath
+.vscode/
+.idea/
