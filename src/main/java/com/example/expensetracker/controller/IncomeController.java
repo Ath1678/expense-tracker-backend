@@ -31,4 +31,9 @@ public class IncomeController {
         incomeService.deleteIncome(id);
         return ResponseEntity.ok("Income deleted successfully");
     }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<Income> updateIncome(@PathVariable Long id, @RequestBody Income income) {
+        return ResponseEntity.ok(incomeService.updateIncome(id, income));
+    }
 }

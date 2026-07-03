@@ -34,6 +34,18 @@ public class RecurringExpenseService {
         recurringExpenseRepository.deleteById(id);
     }
 
+    public RecurringExpense updateRecurringExpense(Long id, RecurringExpense details) {
+        RecurringExpense recurring = recurringExpenseRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Recurring expense not found"));
+        
+        recurring.setTitle(details.getTitle());
+        recurring.setAmount(details.getAmount());
+        recurring.setCategory(details.getCategory());
+        recurring.setDayOfMonth(details.getDayOfMonth());
+        
+        return recurringExpenseRepository.save(recurring);
+    }
+
     @Transactional
     public Expense payRecurringExpense(Long id, User user) {
         Optional<RecurringExpense> recurringOpt = recurringExpenseRepository.findById(id);

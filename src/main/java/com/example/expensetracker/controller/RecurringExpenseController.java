@@ -49,4 +49,9 @@ public class RecurringExpenseController {
     public ResponseEntity<Expense> pay(@PathVariable Long id) {
         return ResponseEntity.ok(recurringExpenseService.payRecurringExpense(id, getCurrentUser()));
     }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<RecurringExpense> update(@PathVariable Long id, @RequestBody RecurringExpense recurringExpense) {
+        return ResponseEntity.ok(recurringExpenseService.updateRecurringExpense(id, recurringExpense));
+    }
 }

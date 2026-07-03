@@ -43,11 +43,27 @@ public class IncomeServiceImpl implements IncomeService {
         Income income = incomeRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Income not found"));
 
-        // Ensure user owns the income before deleting
         if (!income.getUser().getId().equals(getCurrentUser().getId())) {
             throw new RuntimeException("Unauthorized");
         }
 
         incomeRepository.delete(income);
+    }
+
+    @Override
+    public Income updateIncome(Long id, Income incomeDetails) {
+        Income income = incomeRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Income not found"));
+
+        if (!income.getUser().getId().equals(getCurrentUser().getId())) {
+            throw new RuntimeException("Unauthorized");
+        }
+
+        income.setSource(incomeDetails.getSource());
+        income.setAmount(incomeDetails.getAmount());
+        income.setDate(incomeDetails.getDate());
+        income.setNotes(incomeDetails.getNotes());
+
+        return incomeRepository.save(income);
     }
 }
